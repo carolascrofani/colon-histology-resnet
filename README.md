@@ -1,37 +1,32 @@
-# Colon Histology Classifier
+#AI-Driven Histopathology: Colon Adenocarcinoma Classification
+A Deep Learning approach using Transfer Learning and Grad-CAM Explainability.
 
-Questo progetto analizza sezioni di colon colorate con ematossilina 
-ed eosina (H&E) al fine di determinare la presenza o meno di un 
-adenocarcinoma del colon.
+##Project Overview
+Questo progetto esplora l'efficacia delle Convolutional Neural Networks (CNN) nella distinzione automatizzata tra tessuto sano e adenocarcinoma del colon in immagini istopatologiche colorate con Ematossilina ed Eosina (H&E). L'obiettivo è validare la capacità di astrazione di modelli pre-trainati su task di computer vision generica applicati alla patologia digitale.
 
-## Modello
+##Methodology
+Model Architecture: ResNet50 (Transfer Learning con pesi ImageNet).
 
-Transfer learning con ResNet50 pre-trained su ImageNet, 
-fine-tuned sul dataset LC25000 (25.000 immagini istologiche).
-L'interpretabilità è garantita tramite Grad-CAM, che visualizza 
-le regioni dell'immagine su cui il modello basa la classificazione.
+Dataset: LC25000 (selezione di 25.000 immagini totali). [LC25000 su Kaggle](https://www.kaggle.com/datasets/andrewmvd/lung-and-colon-cancer-histopathological-images)
 
-## Risultati
+Optimization: Adam Optimizer (lr=0.001), Cross-Entropy Loss.
 
-- Accuracy: 99.87%
-- AUC: 1.000
-- ROC curve: quasi perfetta
+Explainability: Implementazione di Grad-CAM (Gradient-weighted Class Activation Mapping) per mappare le aree di attivazione neuronale e verificare la coerenza con i criteri diagnostici istologici.
 
-## Limiti
+##Performance & Critical Discussion
+Accuracy: 99.87%
 
-Il dataset LC25000 è costituito da preparati ben conservati e 
-con colorazioni omogenee. I risultati potrebbero variare su immagini 
-provenienti da contesti clinici reali, con variabilità 
-inter-laboratorio nelle colorazioni e nella qualità dei preparati.
+AUC-ROC: 1.000
 
-## Setup
+Nota Critica: Sebbene le metriche indichino una separazione lineare perfetta delle classi nel dataset LC25000, tale performance è indicativa della standardizzazione del dataset stesso. In contesti clinici real-world, la varianza inter-laboratorio e la presenza di artefatti tecnici rappresentano la vera sfida per la generalizzazione del modello.
 
-```bash
-pip install torch torchvision scikit-learn grad-cam matplotlib pillow
-```
+##Limitations & Future Directions
+1. Dataset Homogeneity: Le immagini provengono da un'unica fonte, limitando la robustezza del modello verso la variabilità cromatica (staining).
 
-Dataset: [LC25000 su Kaggle](https://www.kaggle.com/datasets/andrewmvd/lung-and-colon-cancer-histopathological-images)
+2. External Validation: È necessaria una validazione su dataset indipendenti (es. TCGA) per confermare l'utilità clinica.
 
-## Autore
+3. Future Work: Implementazione di tecniche di Color Normalization e test su modelli basati su Vision Transformers (ViT).
 
-Studentessa di Medicina, Università Cattolica del Sacro Cuore, Roma
+##Author
+Carola Scrofani
+Studentessa di Medicina | Università Cattolica del Sacro Cuore, Roma.
