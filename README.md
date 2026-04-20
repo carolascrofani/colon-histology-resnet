@@ -24,8 +24,10 @@ Nota Critica: Sebbene le metriche indichino una separazione lineare perfetta del
 1. Dataset Homogeneity: Le immagini provengono da un'unica fonte, limitando la robustezza del modello verso la variabilità cromatica (staining).
 
 2. External Validation: È necessaria una validazione su dataset indipendenti (es. TCGA) per confermare l'utilità clinica.
+   
+3. Shortcut Learning: Un test di occlusione ha mostrato che mascherare le zone di alta attivazione Grad-CAM non riduce la probabilità di classificazione. Il modello potrebbe basarsi su caratteristiche globali del dataset — come densità cromatica media o texture dello stroma — piuttosto che su pattern morfologici biologicamente rilevanti.
 
-3. Future Work: Implementazione di tecniche di Color Normalization e test su modelli basati su Vision Transformers (ViT).
+4. Future Work: Implementazione di tecniche di Color Normalization e test su modelli basati su Vision Transformers (ViT).
 
 ## Author
 Carola Scrofani
